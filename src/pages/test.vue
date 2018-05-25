@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <blog-post v-for="post in posts" :title="post"></blog-post>
+  <div :style="{fontSize: postFontSize + 'px'}">
+    <blog-post v-for="post in posts" :title="post" v-on:enlarge-event="postFontSize += 2" v-on:smaller-event="postFontSize -= 2"></blog-post>
   </div>
 </template>
 
@@ -14,7 +14,8 @@
     },
     data() {
       return {
-        posts: ['title-a', 'title-b']
+        posts: ['title-a', 'title-b'],
+        postFontSize: 14
       }
     }
   }
