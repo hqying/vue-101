@@ -1,6 +1,7 @@
 <template>
   <div :style="{fontSize: postFontSize + 'px'}">
-    <blog-post v-for="post in posts" :title="post" v-on:enlarge-event="postFontSize += 2" v-on:smaller-event="postFontSize -= 2"></blog-post>
+    <blog-post v-for="post in posts" :title="post" v-on:enlarge-event="postFontSize += 2" v-on:smaller-event="postFontSize -= 2"
+               v-on:event-with-arg="eventWithArgHandler"></blog-post>
   </div>
 </template>
 
@@ -16,6 +17,12 @@
       return {
         posts: ['title-a', 'title-b'],
         postFontSize: 14
+      }
+    },
+    methods: {
+      eventWithArgHandler(arg, secondArg) {
+        alert(arg.name + ' ' + arg.addr + ', success');
+        alert('second arg: ' + secondArg.text)
       }
     }
   }
