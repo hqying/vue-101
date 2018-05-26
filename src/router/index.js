@@ -16,9 +16,14 @@ export default new Router({
       name: 'test',
       component: (resolve) => {
         require(['../pages/test'], resolve)
-      },
-
-
+      }
+    },
+    {
+      path: '/test2',
+      name: 'test2',
+      component: (resolve) => {
+        require(['../pages/test2'], resolve)
+      }
     }
   ]
 })

@@ -5,6 +5,9 @@
       <span slot="tail">tail slot</span>
       <p>blablabla slot content</p>
     </blog-post>
+    <p>{{$store.state.count}}</p>
+    <button @click="$store.commit('increment')">+</button>
+    <router-link to="/test2">test2</router-link>
   </div>
 </template>
 
