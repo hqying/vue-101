@@ -5,7 +5,10 @@
       <span slot="tail">tail slot</span>
       <p>blablabla slot content</p>
     </blog-post>
-    <p>{{$store.state.count}}</p>
+    <!-- <p>{{count}}</p> -->
+    <p>{{countAlias}}</p>
+    <p>3 + count = {{localAndStore}}</p>
+    <p>{{somethingEasy}}</p>
     <button @click="$store.commit('increment')">+</button>
     <router-link to="/test2">test2</router-link>
   </div>
@@ -13,6 +16,7 @@
 
 <script>
   import BlogPost from '../components/BlogPost'
+  import {mapState} from 'vuex'
 
   export default {
     name: "test",
@@ -22,8 +26,20 @@
     data() {
       return {
         posts: ['title-a', 'title-b'],
-        postFontSize: 14
+        postFontSize: 14,
+        a: 3
       }
+    },
+    computed: {
+      ...mapState(
+        // ['count']
+        {
+          countAlias: 'count',
+          localAndStore(state) {
+            return this.a + state.count
+          }
+        }
+      )
     },
     methods: {
       eventWithArgHandler(arg, secondArg) {
