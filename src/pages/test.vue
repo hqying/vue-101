@@ -8,7 +8,6 @@
     <!-- <p>{{count}}</p> -->
     <p>{{countAlias}}</p>
     <p>3 + count = {{localAndStore}}</p>
-    <p>{{somethingEasy}}</p>
     <button @click="$store.commit('increment')">+</button>
     <router-link to="/test2">test2</router-link>
   </div>
