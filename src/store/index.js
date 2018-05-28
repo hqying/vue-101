@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import * as types from './mutation-types'
 
 Vue.use(Vuex)
 
@@ -27,8 +28,8 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    increment(state) {
-      state.count++
+    [types.INCREMENT_MUNAME] (state, payload) {
+      state.count += payload.n
     }
   }
 })

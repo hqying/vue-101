@@ -8,14 +8,15 @@
     <!-- <p>{{count}}</p> -->
     <p>{{countAlias}}</p>
     <p>3 + count = {{localAndStore}}</p>
-    <button @click="$store.commit('increment')">+</button>
+    <!-- <button @click="$store.commit('incremeent', {n: 3})">+</button> -->
+    <button @click="incremeent({n: 3})">+</button>
     <router-link to="/test2">test2</router-link>
   </div>
 </template>
 
 <script>
   import BlogPost from '../components/BlogPost'
-  import {mapState} from 'vuex'
+  import {mapState, mapMutations} from 'vuex'
 
   export default {
     name: "test",
@@ -44,7 +45,10 @@
       eventWithArgHandler(arg, secondArg) {
         alert(arg.name + ' ' + arg.addr + ', success');
         alert('second arg: ' + secondArg.text)
-      }
+      },
+      ...mapMutations(
+        {incremeent: 'INCREMENT'}
+      )
     }
   }
 </script>
