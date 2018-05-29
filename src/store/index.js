@@ -31,5 +31,12 @@ export default new Vuex.Store({
     [types.INCREMENT_MUNAME] (state, payload) {
       state.count += payload.n
     }
+  },
+  actions: {
+    increment(context, n) {
+      setTimeout(() => {
+        context.commit('INCREMENT', {n: n})
+      }, 1000)
+    }
   }
 })
