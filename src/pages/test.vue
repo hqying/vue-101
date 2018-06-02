@@ -10,13 +10,14 @@
     <p>3 + count = {{localAndStore}}</p>
     <!-- <button @click="$store.commit('incremeent', {n: 3})">+</button> -->
     <button @click="incremeent({n: 3})">+</button>
+    <button @click="increment(4)">action increment</button>
     <router-link to="/test2">test2</router-link>
   </div>
 </template>
 
 <script>
   import BlogPost from '../components/BlogPost'
-  import {mapState, mapMutations} from 'vuex'
+  import {mapState, mapMutations, mapActions} from 'vuex'
 
   export default {
     name: "test",
@@ -32,11 +33,13 @@
     },
     computed: {
       ...mapState(
+        // 'count_module',
         // ['count']
         {
-          countAlias: 'count',
+          // countAlias: 'count',
+          countAlias: state => state.countmodule.count,
           localAndStore(state) {
-            return this.a + state.count
+            return this.a + state.countmodule.count
           }
         }
       )
@@ -48,6 +51,13 @@
       },
       ...mapMutations(
         {incremeent: 'INCREMENT'}
+      ),
+      ...mapActions(
+        // 'countmodule', 
+        {
+          increment: 'countmodule/increment'
+        }
+        
       )
     }
   }

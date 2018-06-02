@@ -24,6 +24,13 @@ export default new Router({
       component: (resolve) => {
         require(['../pages/test2'], resolve)
       }
+    },
+    {
+      path: '/test_store_module',
+      name: 'test_store_module',
+      component: (resolve) => {
+        require(['../pages/test_store_module'], resolve)
+      }
     }
   ]
 })
